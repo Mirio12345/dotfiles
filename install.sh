@@ -8,7 +8,7 @@ echo "Installing core dependencies..."
 yay -S hyprland swaync hyprpaper kitty zsh rofi waybar-git nwg-look \
   bibata-cursor-theme-bin papirus-icon-theme papirus-folders \
   hyprpolkitagent cliphist wl-clipboard hyprpicker grim slurp \
-  networkmanager-dmenu-git pavucontrol hyprlock hypridle nvim vi --needed
+  networkmanager-dmenu-git pavucontrol hyprlock hypridle nvim --needed
 
 # 2. Configure System and UI Defaults
 echo "Setting up system settings..."
