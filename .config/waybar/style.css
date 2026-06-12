@@ -1,0 +1,115 @@
+/* Toned-down Industrial Cyberpunk Theme */
+@define-color bg_bar      rgba(13, 16, 23, 0.85); /* Matte dark navy-gray */
+@define-color bg_module   #181d29;
+@define-color border_dim  #2c354a;
+@define-color text_main   #cbd5e1;                /* Clean off-white */
+
+/* Muted Accent Tones */
+@define-color cyber_red   #d93856;
+@define-color cyber_cyan  #17a2b8;
+@define-color cyber_gold  #d4af37;
+@define-color cyber_blue  #3b82f6;
+
+* {
+    border: none;
+    border-radius: 0px;
+    font-family: "JetBrainsMono Nerd Font", "Adwaita Sans", sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    min-height: 0;
+    padding: 0;
+    margin: 0;
+}
+
+window#waybar {
+    background: transparent;
+}
+
+tooltip {
+    background: @bg_module;
+    border: 1px solid @border_dim;
+    border-radius: 4px;
+}
+
+tooltip label {
+    color: @text_main;
+    padding: 6px;
+}
+
+/* Left Section Modules */
+#clock,
+#cpu,
+#memory,
+#memory.swap {
+    background-color: @bg_bar;
+    color: @text_main;
+    padding: 4px 14px;
+    margin: 0 0 0 12px;
+    border-radius: 4px;
+    border: 1px solid @border_dim;
+}
+
+/* Resource tracking colors */
+#cpu { color: @cyber_cyan; }
+#memory { color: @cyber_gold; }
+#memory.swap { color: @cyber_blue; }
+
+/* Dead Center Workspaces Container */
+#workspaces {
+    background-color: @bg_bar;
+    color: @text_main;
+    padding: 4px 6px;
+    border-radius: 4px;
+    border: 1px solid @border_dim;
+}
+
+#workspaces button {
+    padding: 0px 8px;
+    margin: 0px 2px;
+    border-radius: 2px;
+    color: @border_dim;
+    background-color: transparent;
+    transition: all 0.2s ease;
+}
+
+#workspaces button.active {
+    background-color: @cyber_red;
+    color: #0d1017;
+}
+
+#workspaces button:hover {
+    background-color: @bg_module;
+    color: @text_main;
+}
+
+#workspaces button.urgent {
+    background-color: @cyber_gold;
+    color: #0d1017;
+}
+
+/* Right Section Modules */
+#network,
+#battery,
+#pulseaudio,
+#custom-notification {
+    background-color: @bg_bar;
+    color: @text_main;
+    padding: 4px 14px;
+    margin: 0 0 0 12px;
+    border-radius: 4px;
+    border: 1px solid @border_dim;
+}
+
+/* Subtle highlights for system statuses */
+#network { color: @text_main; }
+#battery { color: @text_main; }
+#pulseaudio { color: @text_main; }
+#custom-notification { color: @cyber_red; }
+
+#tray {
+    background-color: @bg_bar;
+    padding: 0 14px;
+    margin: 0 0 0 12px;
+    border-radius: 4px;
+    border: 1px solid @border_dim;
+}
