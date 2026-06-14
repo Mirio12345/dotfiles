@@ -64,7 +64,7 @@
           },
           {
             "label": "⏻ Shut down",
-            "command": "swaync-client -t -sw && sudo shutdown"
+            "command": "swaync-client -t -sw && systemctl poweroff"
           }
         ]
     },
