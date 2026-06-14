@@ -8,7 +8,8 @@ echo "Installing core dependencies..."
 yay -S hyprland swaync hyprpaper kitty zsh rofi waybar-git nwg-look \
   bibata-cursor-theme-bin papirus-icon-theme papirus-folders \
   hyprpolkitagent cliphist wl-clipboard hyprpicker grim slurp \
-  networkmanager-dmenu-git pavucontrol hyprlock hypridle nvim --needed
+  networkmanager-dmenu-git pavucontrol hyprlock hypridle nvim \
+  wl-freeze-git --needed
 
 # 2. Configure System and UI Defaults
 echo "Setting up system settings..."
@@ -37,13 +38,23 @@ else
     echo "Powerlevel10k repository already exists. Skipping..."
 fi
 
-# 5. Switch System Default Shell to Zsh
+#5. Install zsh-autosuggestions
+echo "Installing zsh-suggestions Plugin ..."
+mkdir -p "$ZSH_CUSTOM_DIR/plugins"
+
+if [ ! -d "$ZSH_CUSTOM_DIR/plugins/zsh-auto-suggestions" ]; then
+    git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+else
+    echo "zsh-autosuggestions repository already exists. Skipping..."
+fi
+
+# 6. Switch System Default Shell to Zsh
 if [ "$SHELL" != "$(which zsh)" ]; then
     echo "Changing default shell to Zsh (you may be prompted for your sudo/user password)..."
     chsh -s "$(which zsh)"
 fi
 
-# 6. Linking your Managed Dotfiles
+# 7. Linking your Managed Dotfiles
 DOTFILES_DIR="$HOME/dotfiles"
 
 echo "Backing up existing configuration baselines..."
@@ -53,6 +64,7 @@ mv ~/.p10k.zsh ~/.p10k.zsh.bak 2>/dev/null || true
 echo "Forging symlinks for Zsh configurations..."
 ln -sf "$DOTFILES_DIR/.zshrc" "$HOME/.zshrc"
 ln -sf "$DOTFILES_DIR/.p10k.zsh" "$HOME/.p10k.zsh"
+ln -sf "$DOTFILES_DIR/.themes" "$HOME/.themes"
 
 echo "Forging symlinks for .config apps..."
 mkdir -p "$HOME/.config"

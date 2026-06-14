@@ -28,7 +28,6 @@ hl.bind(mainMod .. " + J", hl.dsp.layout("togglesplit"))    -- dwindle only
 
 -- customs
 hl.bind(mainMod .. " + R", hl.dsp.exec_cmd("~/.config/waybar/launch.sh"))
--- Official v0.55 syntax for modifier-only bindings
 hl.bind("SUPER + SUPER_L", hl.dsp.exec_cmd(menu), { release = true })
 hl.bind(mainMod .. " + V", hl.dsp.exec_cmd("~/.config/hypr/scripts/cliphist-menu.sh"))
 hl.bind(mainMod .. " + SHIFT + P", hl.dsp.exec_cmd("hyprpicker -a && notify-send 'Color Picker' 'Hex code copied to clipboard!'"))
@@ -37,8 +36,9 @@ hl.bind(mainMod .. " + SHIFT + S", hl.dsp.exec_cmd("grim -g \"$(slurp)\" - | wl-
 -- Take a screenshot of the entire monitor
 hl.bind("SHIFT + Print", hl.dsp.exec_cmd("grim - | wl-copy && wl-paste > ~/Pictures/Screenshot_$(date +%Y%m%d_%H%M%S).png && notify-send 'Screenshot' 'Full screen saved and copied'"))
 hl.bind(mainMod .. " + L", hl.dsp.exec_cmd("hyprlock"))
-
-
+hl.bind(mainMod .. " + H", hl.dsp.exec_cmd("wl-freeze -a -s"))
+hl.bind(mainMod .. " + F", hl.dsp.window.fullscreen({mode = 0, action = "toggle"}))
+hl.bind(mainMod .. " + SHIFT + F", hl.dsp.window.fullscreen({mode = 1, action = "toggle"}))
 
 -- Move focus with mainMod + arrow keys
 hl.bind(mainMod .. " + left",  hl.dsp.focus({ direction = "left" }))
