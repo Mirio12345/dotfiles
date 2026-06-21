@@ -16,6 +16,7 @@ echo "Setting up system settings..."
 systemctl --user enable --now hyprpolkitagent
 xdg-user-dirs-update
 papirus-folders -C black
+echo 'KERNEL=="hidraw*", SUBSYSTEM=="hidraw", MODE="0666", TAG+="uaccess"' | sudo tee -a /etc/udev/rules.d/50-qmk.rules > /dev/null
 
 # 3. Automated Install of Oh My Zsh (Unattended)
 if [ ! -d "$HOME/.oh-my-zsh" ]; then
